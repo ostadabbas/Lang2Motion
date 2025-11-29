@@ -22,7 +22,36 @@ Lang2Motion learns trajectory representations through dual supervision: textual 
 - **CLIP Integration**: Dual supervision through text and trajectory visualizations
 - **Loss Functions**: Reconstruction, velocity consistency, and cosine similarity alignment
 
-## Quick Start
+---
+
+## 🎨 Visualizations
+
+### Framework Overview
+<div align="center">
+<img src="visualizations/lang2motion_concept.png" alt="Lang2Motion Concept" width="800">
+</div>
+
+### Method Architecture
+<div align="center">
+<img src="visualizations/lang2motion_method.png" alt="Lang2Motion Method" width="800">
+</div>
+
+### Teaser Results
+<div align="center">
+<img src="visualizations/lang2motion_teaser.png" alt="Lang2Motion Teaser" width="800">
+</div>
+
+### Motion Generation Examples
+
+| Text Prompt | Generated Motion |
+|-------------|------------------|
+| "A person walking forward" | <img src="visualizations/motion_0e34f4dafb11_exp0.gif" width="200"> |
+| "A car turning left" | <img src="visualizations/motion_12c80d76d8c0_exp1.gif" width="200"> |
+| "A ball bouncing" | <img src="visualizations/motion_1a099c45c2d3_exp0.gif" width="200"> |
+
+---
+
+## 🚀 Quick Start
 
 ### Installation
 
