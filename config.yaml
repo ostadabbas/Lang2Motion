@@ -1,0 +1,35 @@
+# Lang2Motion Configuration
+
+# Model parameters
+model:
+  name: MOTIONCLIP
+  latent_dim: 512
+  num_layers: 4
+  num_heads: 4
+  num_points: 64  # 8x8 grid
+
+# Training parameters
+training:
+  batch_size: 32
+  learning_rate: 1e-4
+  epochs: 200
+  device: cuda
+
+# Loss weights
+losses:
+  reconstruction: 5.0
+  text_reconstruction: 10.0  # Critical for text-to-motion generation
+  velocity: 0.01
+  clip_text: 0.1
+
+# Dataset
+dataset:
+  name: MeViS
+  num_frames: 45
+  frame_rate: 30
+  
+# Generation
+generation:
+  num_samples: 5
+  noise_scale: 0.1
+  temperature: 1.0
