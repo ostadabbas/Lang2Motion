@@ -41,13 +41,36 @@ Lang2Motion learns trajectory representations through dual supervision: textual 
 <img src="visualizations/lang2motion_teaser.png" alt="Lang2Motion Teaser" width="800">
 </div>
 
-### Motion Generation Examples
+### Motion Interpolation and Trajectory Generation
 
-| Text Prompt | Generated Motion |
-|-------------|------------------|
-| "A person walking forward" | <img src="visualizations/motion_0e34f4dafb11_exp0.gif" width="200"> |
-| "A car turning left" | <img src="visualizations/motion_12c80d76d8c0_exp1.gif" width="200"> |
-| "A ball bouncing" | <img src="visualizations/motion_1a099c45c2d3_exp0.gif" width="200"> |
+<div align="center">
+
+**Trajectory Generation from Initial Grid and Latent Space Interpolation**
+
+Given identical text descriptions, Lang2Motion generates different motion interpretations based on initial grid placement and demonstrates semantic interpolation in CLIP's joint embedding space.
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="visualizations/interpolation_133c461a4340_exp2_to_6084240e75fa_exp0_fixed.gif" width="350">
+<br>
+<strong>Left:</strong> From a dancing pose grid, the model emphasizes panda appearance: <span style="color: #3498db;">dancing</span> <span style="color: #ff6b35;">p</span><span style="color: #f7931e;">a</span><span style="color: #2ecc71;">n</span><span style="color: #3498db;">d</span><span style="color: #9b59b6;">a</span>
+</td>
+<td width="50%" align="center">
+<img src="visualizations/interpolation_6084240e75fa_exp0_to_133c461a4340_exp2_fixed.gif" width="350">
+<br>
+<strong>Right:</strong> From a panda's grid, the model emphasizes dancing motion: <span style="color: #ff6b35;">d</span><span style="color: #f7931e;">a</span><span style="color: #2ecc71;">n</span><span style="color: #3498db;">c</span><span style="color: #9b59b6;">i</span><span style="color: #e91e63;">n</span><span style="color: #e74c3c;">g</span> <span style="color: #3498db;">panda</span>
+</td>
+</tr>
+</table>
+
+**Key Insights:**
+- Given identical text *"dancing panda"*, Lang2Motion generates different motion interpretations based on initial grid placement
+- Initial grids use automatically retrieved masks; initial video frames shown for visualization only
+- Demonstrates semantic interpolation in CLIP's joint embedding space
+- Smooth transition between different motion styles while maintaining semantic coherence
+
+</div>
 
 ---
 
