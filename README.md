@@ -18,10 +18,17 @@ Lang2Motion learns to map text descriptions to motion trajectories by:
 
 ## Architecture
 
+Lang2Motion uses a dual-encoder approach with multiple decoder options:
+
 - **Encoder**: Transformer-based motion encoder (4 layers, 4 attention heads)
-- **Decoder**: MLP decoder for trajectory generation
+- **Decoder Options**:
+  - **Transformer Autoregressive**: Sequential generation with causal attention
+  - **MLP**: Direct mapping from latent to trajectories (tested as baseline)
 - **CLIP Integration**: Text-motion alignment using CLIP embeddings
-- **Loss Functions**: Reconstruction, velocity consistency, and CLIP contrastive losses
+- **Loss Functions**: 
+  - Reconstruction loss (L1/L2)
+  - Velocity consistency for temporal smoothness
+  - Cosine similarity loss for CLIP alignment (not contrastive)
 
 ## Quick Start
 

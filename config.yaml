@@ -7,6 +7,7 @@ model:
   num_layers: 4
   num_heads: 4
   num_points: 64  # 8x8 grid
+  decoder_type: transformer_autoregressive  # Options: transformer_autoregressive, mlp
 
 # Training parameters
 training:
@@ -20,7 +21,7 @@ losses:
   reconstruction: 5.0
   text_reconstruction: 10.0  # Critical for text-to-motion generation
   velocity: 0.01
-  clip_text: 0.1
+  cosine_similarity: 0.1  # Cosine similarity loss for CLIP alignment
 
 # Dataset
 dataset:
