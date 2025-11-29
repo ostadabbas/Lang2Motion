@@ -1,34 +1,26 @@
 # Lang2Motion
 
-Lang2Motion is a neural system that generates human motion trajectories from natural language descriptions using point-based representations and CLIP alignment.
+Lang2Motion is a framework for language-guided point trajectory generation by aligning motion manifolds with joint embedding spaces. Unlike prior work focusing on human motion or video synthesis, we generate explicit trajectories for arbitrary objects using motion extracted from real-world videos via point tracking.
 
 ## Overview
 
-Lang2Motion learns to map text descriptions to motion trajectories by:
-- Encoding point trajectories using transformer architectures
-- Aligning motion and text embeddings in CLIP space
-- Generating diverse motions from language prompts
+Lang2Motion learns trajectory representations through dual supervision: textual motion descriptions and rendered trajectory visualizations, both mapped through CLIP's frozen encoders. Our transformer-based auto-encoder supports multiple decoder architectures including autoregressive and MLP variants.
 
-## Key Features
+## Key Results
 
-- **Text-to-Motion Generation**: Generate point trajectories from natural language descriptions
-- **CLIP Alignment**: Leverage CLIP's multimodal understanding for text-motion correspondence
-- **Point-Based Representation**: Efficient 64-point (8x8 grid) motion encoding
-- **Multimodal Training**: Support for text and trajectory overlay modalities
+- **Text-to-Trajectory Retrieval**: 34.2% Recall@1, outperforming video-based methods by 12.5 points
+- **Motion Accuracy**: 33-52% improvement (12.4 ADE vs 18.3-25.3) compared to video generation baselines
+- **Action Recognition**: 88.3% Top-1 accuracy on human actions despite training on diverse object motions
+- **Applications**: Style transfer, semantic interpolation, and latent-space editing through CLIP-aligned representations
 
 ## Architecture
 
-Lang2Motion uses a dual-encoder approach with multiple decoder options:
-
-- **Encoder**: Transformer-based motion encoder (4 layers, 4 attention heads)
+- **Encoder**: Transformer-based motion encoder with point trajectory inputs
 - **Decoder Options**:
   - **Transformer Autoregressive**: Sequential generation with causal attention
-  - **MLP**: Direct mapping from latent to trajectories (tested as baseline)
-- **CLIP Integration**: Text-motion alignment using CLIP embeddings
-- **Loss Functions**: 
-  - Reconstruction loss (L1/L2)
-  - Velocity consistency for temporal smoothness
-  - Cosine similarity loss for CLIP alignment (not contrastive)
+  - **MLP**: Direct mapping from latent to trajectories
+- **CLIP Integration**: Dual supervision through text and trajectory visualizations
+- **Loss Functions**: Reconstruction, velocity consistency, and cosine similarity alignment
 
 ## Quick Start
 
@@ -60,22 +52,24 @@ python generate.py --text "a person walking forward" --output output.npy
 
 ## Dataset
 
-Lang2Motion uses the MeViS dataset with CoTracker3 point trajectories:
-- 1662 video clips with human motion
-- Point tracks extracted using CoTracker3
-- Text descriptions for each video
+Lang2Motion uses point trajectories extracted from real-world videos:
+- **Source**: Diverse video datasets with object and human motion
+- **Tracking**: Point trajectories extracted via CoTracker3
+- **Supervision**: Text descriptions and rendered trajectory visualizations
+- **Scope**: Arbitrary objects, not limited to human motion
 
 ## Results
 
-- **Velocity Preservation**: 0.899-1.029 (near-perfect motion preservation)
-- **CLIP Alignment**: 9.42 separation score (strong text-motion discrimination)
-- **Diversity**: Stochastic sampling for varied motion generation
+- **Text-to-Trajectory Retrieval**: 34.2% Recall@1
+- **Motion Accuracy**: 12.4 ADE (vs 18.3-25.3 for video baselines)
+- **Action Recognition**: 88.3% Top-1 accuracy (cross-domain transfer)
+- **Applications**: Style transfer, semantic interpolation, latent-space editing
 
 ## Citation
 
 ```bibtex
 @article{lang2motion2024,
-  title={Lang2Motion: Text-Driven Human Motion Generation},
+  title={Lang2Motion: Language-Guided Point Trajectory Generation},
   author={ACLab NEU},
   journal={arXiv preprint},
   year={2024}
