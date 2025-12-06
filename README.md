@@ -120,11 +120,11 @@ Lang2Motion uses point trajectories extracted from real-world videos:
 ## Citation
 
 ```bibtex
-@article{lang2motion2024,
+@article{lang2motion2025,
   title={Lang2Motion: Language-Guided Point Trajectory Generation},
   author={ACLab NEU},
   journal={arXiv preprint},
-  year={2024}
+  year={2025}
 }
 ```
 
